@@ -162,7 +162,7 @@ docker_create_db_directories() {
 
 	if [ "$user" = "0" ]; then
 		# this will cause less disk access than `chown -R`
-		find "$DATADIR" \! -user mysql -exec chown mysql '{}' +
+		find "$DATADIR" "${SOCKET%/*}" \! -user mysql -exec chown mysql '{}' +
 	fi
 }
 
